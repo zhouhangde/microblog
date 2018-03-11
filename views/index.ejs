@@ -1,0 +1,18 @@
+<!--在渲染模板时我们传入了一个变量 title 值为 express 字符串，模板引擎会将所有 <%= title %> 替换为 express ，然后将渲染后生成的html显示到浏览器中-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!--设置了静态文件目录为 public 文件夹.href目录下为public-->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <ul>  
+      <li><a href="/markdown">Markdown Demo page</a></li>  
+      <li><a href="/blogs/fendo.html">My fendo markdown blog</a></li>  
+    </ul> 
+  </body>
+</html>

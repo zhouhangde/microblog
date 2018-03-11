@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!--设置了静态文件目录为 public 文件夹.href目录下为public-->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% include footer.ejs %>
+    <form action="/login" method='post'>
+    用户名：<input type='text' name='userName' value='<%= userName%>' /></br>
+      密码：<input type='text' name='password' value='<%= password%>' /></br>
+    <input type='submit'  value='登录' />
+    </form>
+    <% include footer.ejs %>
+  </body>
+</html>
