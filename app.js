@@ -154,6 +154,35 @@ app.use(cors({
 //   next() // otherwise continue
 // })
 
+//下面为nodejs的全局对象
+//定时器
+// setTimeout(function(){
+  //  console.log("三秒之后执行");
+// },3000);
 
-//导出app实例供其他模块调用
+//持续执行,可做计时器
+// var time = 0;
+// var timer = setInterval(function(){
+//   time +=2;
+//   //  console.log(time+'两秒已经过了');
+//    if(time>4){
+//     //  关闭计时器
+//        clearInterval(timer);
+//    }
+// },2000);
+
+//nodejs下的路径
+// console.log(__dirname);   //不包含文件名的路径
+// console.log(__filename);   //打印当前包含文件名的路径
+
+//global,对应在js中的全局对象中为window，node环境下的全局对象为global,此时this关键字默认为global
+// console.log(global);
+
+//js中执行
+// var adder = function(a,b){
+//    return `你计算的和为：${a+b}`;
+// };
+// adder(1,2);
+
+//导出app实例供其他模块调用，从外界导出的为module.exports(只有这几个，多了会覆盖)，module.exports可以继续增加属性，如module.exports.app = app;
 module.exports = app;
