@@ -5,11 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//如何使用ejs的layout模板，3.0之前自带layout模板
+var partials = require('express-partials');
+
 //引入cors包,cors 安全，自定义用于跨域
 var cors = require('cors');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var userlist = require('./routes/userlist');
 
 //文件写入控制的模块
 var fs = require('fs');  
@@ -25,8 +29,16 @@ app.set('views', path.join(__dirname, 'views'));
 //设置视图模板引擎为 ejs。
 app.set('view engine', 'ejs');
 
+//系统引擎会将找到后缀名为html的文件 可以引入ejs
+// app.engine('html',require('ejs').renderFile);
+//设置视图模板引擎为 html
+// app.set('view engine', 'html');
+
 // 设置/public/favicon.ico为favicon图标
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+app.use(partials());
+
 //加载日志中间件。
 app.use(logger('dev'));
 //加载解析json的中间件
@@ -41,6 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //路由控制器。
 app.use('/', index);
 app.use('/users', users);
+app.use('/userlist', userlist);
 
 //监听端口4100，默认为3000(其实一直在开启3000)
 // var server = app.listen(4100,()=>{
@@ -125,6 +138,22 @@ app.use(cors({
     // res.header("Content-Type", "application/json;charset=utf-8");
 //     next();
 // });
+
+// var session = require('express-session');
+// var RedisStore = require('connect-redis')(session);
+
+// app.use(session({
+//     store: new RedisStore(options),
+//     secret: 'keyboard cat'
+// }));
+
+// app.use(function (req, res, next) {
+//   if (!req.session) {
+//     return next(new Error('oh no')) // handle error
+//   }
+//   next() // otherwise continue
+// })
+
 
 //导出app实例供其他模块调用
 module.exports = app;
