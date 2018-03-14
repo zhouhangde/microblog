@@ -16,6 +16,7 @@
     "express-partials": "^0.3.0",
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
+    "jquery": "^3.3.1",
     "markdown-js": "0.0.4",
     "mongodb": "^3.0.4",
     "mongoose": "^5.0.9",
@@ -25,5 +26,8 @@
     "mysql": "^2.15.0",
     "redis": "^2.8.0",
     "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.4"
   }
 }

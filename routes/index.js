@@ -62,6 +62,11 @@ router.post('/login',(req,res)=>{
 //     res.end();    
 // });
 
+//设置路由参数
+router.get('/profile/:id', function(req, res) {    
+   res.send("您所设置的参数为："+req.params.id); 
+});
+
 router.get('/markdown', function(req, res) {    
    res.render('index.md',{layout:false});  
 });
@@ -212,10 +217,10 @@ client.on("connect", function() {
   // sismember(key,value,[callback])元素value是否存在于集合key中，存在返回1，不存在返回0
   // smembers(key,[callback])：返回集合 key 中的所有成员，不存在的集合key也不会报错，而是当作空集返回
    client.multi().sismember(key,"c#").smembers(key).exec(function(err,replies){
-       console.log("muili get "+replies.length+" replies");
+      //  console.log("muili get "+replies.length+" replies");
        replies.forEach(function(reply,index){
         //  分别输出两个回应的结果！
-         console.log("reply "+index+":"+reply.toString());
+        //  console.log("reply "+index+":"+reply.toString());
        })
       //  与之对应的还有一个client.end()方法，相对比较暴力；client.quit方法会接收到所有响应后发送quit命令，而client.end则是直接关闭；都是触发end事件
        client.quit();
@@ -315,6 +320,7 @@ client.on("error", function(error) {
 //     });
 // }
 
+
 //1引入事件模块，系统自带的
 var events = require('events');
 
@@ -342,17 +348,158 @@ var myEmitter =new events.EventEmitter();
 //1.引入文件系统模块
 var fs = require('fs');
 // // 2.通过对象调用方法(同步),默认读取的为buffer，一般需转化为utf8
-var readMe = fs.readFileSync('read.txt','utf8');  //同步读取
-console.log(readMe);
+// var readMe = fs.readFileSync('read.txt','utf8');  //同步读取
+// console.log(readMe);
+
+//同步将readMe中的内容写入到write.txt中
+// fs.writeFileSync('write.txt',readMe);
+
+//异步读取文件
+// fs.readFile('read.txt','utf8',function(err,data){
+//     if(err) throw err;
+//     console.log(data);
+// });
+
+//异步写入文件
+// fs.readFile('read.txt','utf8',function(err,data){
+//     if(err) throw err;
+//     fs.writeFile('write2.txt',data);
+// });
+
+//删除文件
+// fs.unlink('write2.txt',function(err){
+//     if(err) throw err;
+//     console.log("文件删除成功");
+// });
+
+//创建文件夹 同步
+// fs.mkdirSync('stuff');
+
+//创建文件夹 同步
+// fs.rmdirSync('stuff');
+
+//异步创建和删除文件夹
+// fs.mkdir('stuff',function(){
+//   fs.readFile('read.txt','utf8',function(err,data){
+//      if (err) throw err;
+//      fs.writeFile('./stuff/write2.txt',data);
+//   })
+// });
+
+//异步删除文件夹
+// 需要先删除文件夹中的内容才可以删除文件夹
+// fs.unlink('./stuff/write2.txt',function(){
+//    fs.rmdir('stuff',function(err){
+//      if(err) throw err;
+//      console.log('文件删除成功');
+//    })
+// });
+
+//通过http模块，创建本地服务器，http为nodejs内部
+var http = require('http');
+
+//创建服务器方法
+// var server = http.createServer(function(req,res){
+      //注意服务器会请求两次地址，为/,和/favicon.ico(请求的图标)
+//     console.log("客户端向服务器发送请求："+req.url);
+//     //返回纯文本数据，可以传html也可以传json
+//     res.writeHead(200,{"Content-type":"text/plain"});
+//     //返回数据
+//     res.end("server is running ");
+// });
+
+//服务对象监听服务器地址以及端口号
+// server.listen(8888,"127.0.0.1");
+// console.log("服务器正在运行");
+
+//二进制缓存区buffer，为nodejs的全局变量
+//管道事件pipe，可以输入和输出流，指定输出位置，可读可写的stream流，对应的事件finish，unpipe，详见nodejs中文网
+//事件都是基于eventEmitter
+
+//nodejs读写文件流
+//读取文件流
+//__dirname为全局变量，为获取当前路径的上一层路径,默认为app.js路径
+// var myReadStream = fs.createReadStream('./read2.txt','utf8');
+
+//创建写入文件流
+// var myWriteStream = fs.createWriteStream('./templates/readMe2.txt','utf8');
+
+//读取完成并写入文件流
+// var times =0;
+//data事件为系统默认的，不能更改
+// myReadStream.on('data',function(chunk){
+//   times++;
+//   console.log("正在接收"+times+"部分数据流");
+//   //写入数据
+//   myWriteStream.write(chunk);
+// })
+
+//使用pipe事件，结果和上面一样,将读到的内容放到写入的里面
+// myReadStream.pipe(myWriteStream);
+
+//将读到的文件直接写入到页面
+// var server = http.createServer(function(req,res){
+//     //返回纯文本数据，可以传html也可以传json
+//     res.writeHead(200,{"Content-type":"text/plain"});
+//     //返回数据
+//     var myReadStream = fs.createReadStream('./read2.txt','utf8');
+//     //将信息写入到返回对象中
+//     myReadStream.pipe(res);
+// });
+// server.listen(8888,"127.0.0.1");
+
+// var server = http.createServer(function(req,res){
+//     //返回纯文本数据，可以传html也可以传json
+//     res.writeHead(200,{"Content-type":"text/html"});
+//     //返回数据
+//     var myReadStream = fs.createReadStream('./views/lanou.ejs','utf8');
+//     //将信息写入到返回对象中
+//     myReadStream.pipe(res);
+// });
+// server.listen(8888,"127.0.0.1");
+
+// var server = http.createServer(function(req,res){
+//     //json格式的时候可以设置为application/json，也可以为html，plain文本
+//     res.writeHead(200,{"Content-type":"application/json"});
+//     //返回数据
+//     var myReadStream = fs.createReadStream('./1.json','utf8');
+//     //将信息写入到返回对象中
+//     myReadStream.pipe(res);
+// });
+// server.listen(8888,"127.0.0.1");
+
+//设置路由
+// var server = http.createServer(function(req,res){
+//     //json格式的时候可以设置为application/json，也可以为html，plain文本
+//     if(req.url==='/home'||req.url==='/shouye'){
+//         var data = [{name:"herry",age:30},{name:"jury",age:29}];
+//         res.writeHead(200,{"Content-type":"application/json"});
+//         //json数据转化为json字符串
+//         res.end(JSON.stringify(data));
+//     }else if(req.url==='/contact'){
+//         res.writeHead(200,{"Content-type":"text/plain"});
+//         //返回数据
+//         var myReadStream = fs.createReadStream('./read2.txt','utf8');
+//         //将信息写入到返回对象中
+//         myReadStream.pipe(res);
+//     }else if(req.url==='/api/docs'){
+//         var myReadStream = fs.createReadStream('./views/lanou.html');
+//         res.writeHead(200,{"Content-type":"text/html"});
+//         //将信息写入到返回对象中
+//         myReadStream.pipe(res);
+//     }
+//     // else if(req.url==='/profile/:id'){
+//     //   //设置路由参数
+//     //   res.send('您所设置的路由参数是：'+req.params.id);  
+//     // }
+    
+// });
+// server.listen(8888,"127.0.0.1");
 
 
-fs.writeFileSync('write.txt',readMe);
 
 
-
-
-
-module.exports = router;
+module.exports = router; 
 
 // 详解
 //----req.query ： 处理 get 请求，获取 get 请求参数
