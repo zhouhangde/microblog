@@ -20,6 +20,8 @@ var fs = require('fs');
 //让Express渲染markdown文件
 var markdown = require('markdown-js'); 
 
+
+
 //生成一个express实例 app
 var app = express();
 
@@ -28,6 +30,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 //设置视图模板引擎为 ejs。
 app.set('view engine', 'ejs');
+
+//让服务器识别外部样式表（服务器无法加载静态的文件，因而需要将静态文件模块化）
+// app.use('/assets',express.static('assets'));
+
 
 //系统引擎会将找到后缀名为html的文件 可以引入ejs
 // app.engine('html',require('ejs').renderFile);
@@ -43,14 +49,14 @@ app.use(partials());
 app.use(logger('dev'));
 //加载解析json的中间件
 app.use(bodyParser.json());
-//加载解析urlencoded请求体的中间件。
+//加载解析urlencoded请求体的中间件(用于解析数据)。
 app.use(bodyParser.urlencoded({ extended: false }));
 //加载解析cookie的中间件。
 app.use(cookieParser());
 //设置public文件夹为存放静态文件的目录
 app.use(express.static(path.join(__dirname, 'public')));
 
-//路由控制器。
+//路由控制器,/users是找到users.js的路径，users必须与users.js其文件名称一样
 app.use('/', index);
 app.use('/users', users);
 app.use('/userlist', userlist);
@@ -185,4 +191,7 @@ app.use(cors({
 // adder(1,2);
 
 //导出app实例供其他模块调用，从外界导出的为module.exports(只有这几个，多了会覆盖)，module.exports可以继续增加属性，如module.exports.app = app;
+
+
+
 module.exports = app;

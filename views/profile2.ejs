@@ -1,0 +1,22 @@
+<!DOCTYPE html>  
+<html>  
+  <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>文章列表页</title>  
+    <link rel='stylesheet' href='/stylesheets/style.css' />  
+  </head>  
+  <body>  
+    <h1><%= wesiteName %></h1>  
+    <p><a href="/form">发表新文章</a></p> 
+    <!--引入公共导航栏 -->
+    <%include ../public/nav.ejs%>
+    <ul>  
+       <%data.forEach(function(item){%>  
+         <li><%=item.age%></li>  
+            <%item.name.forEach(function(item){%>  
+               <li><%=item.name%></li>  
+             <%})%> 
+         <%})%>  
+    </ul>  
+  </body>  
+</html>  

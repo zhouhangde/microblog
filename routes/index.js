@@ -10,14 +10,21 @@ var router = express.Router();
 //加入markdown依赖,express 并不直接支持markdown语法
 var markdown = require('markdown-js');
 
+//自定义模块tadoController
+var todoController =require('../controller/todoController');
+
+//todoController回调函数，将app做为实例传到todoController.js中使用
+todoController(router);
+
 //mongodb
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 // var site = require('../database/db').site;
 
 /* 这段代码的意思是当访问主页时，调用 ejs 模板引擎，来渲染 index.ejs 模版文件（即将 title 变量全部替换为字符串 Express），生成静态页面并显示在浏览器中 */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
 
 router.get('/fendo', function (req, res) {  
   res.send('hello,world!');  
@@ -65,6 +72,19 @@ router.post('/login',(req,res)=>{
 //设置路由参数
 router.get('/profile/:id', function(req, res) {    
    res.send("您所设置的参数为："+req.params.id); 
+});
+
+//设置路由参数
+router.get('/profile2/:id', function(req, res) {   
+  //  var data = [{age:29,name:["Henry","Emily"]},{age:30,name:["Bully","Json"]}] ;
+   var data = [{age:29,name:[{name:"Henry"},{name:"Emily"},{name:"Zhou"}]},{age:30,name:[{name:"Bully"},{name:"Json"}]}] ;
+   res.render('profile2',{wesiteName:req.params.id,data:data});
+});
+
+//返回文件
+router.get('/zhou2', function(req, res) {    
+  //res.sendFile返回为对应的文件，res.send返回的为文本
+   res.sendFile(__dirname+'/index.html'); 
 });
 
 router.get('/markdown', function(req, res) {    
@@ -179,6 +199,30 @@ router.get('/reg', function (req, res) {
 //         db.close();
 //     });
 // });
+
+//链接数据库
+// mongoose.connect('mongodb://localhost:27017/runoob');
+// //创建图表
+// var todoSchema = new mongoose.Schema({
+//       item:String
+// });
+// //往数据库中存储数据
+// var Todo =mongoose.model('Todo',todoSchema);
+// Todo({item:'Hello Every'}).save(function(err,data){
+//    if (err) throw err;
+//    console.log("插入成功");
+//    res.render('todo',{todos:data})
+// })
+
+// router.get('/todo2', function(req, res) {  
+//   //find为查询的方法，{}为查找的内容即找到所有数据库中信息，暂时设置为空  
+//    Todo.find({},function(req,data){
+//         if(err) throw err;
+//         res.render('todo',{todos:data})
+//    })
+// });
+
+
 
 var redis = require("redis"),
 //返回的是一个RedisClient的对象
