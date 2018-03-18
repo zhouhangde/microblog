@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3D云设计</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+</head>
+<style>
+    body{
+        background-color: #efefef;
+    }
+	.head{
+		width: 100%;
+		height: 70px;
+		background:#F0F0F0;
+	}
+	.content{
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.tabDiv{
+		text-align: center;
+	}
+	.title{
+		position: relative;
+		width: 1200px;
+		height: 70px;
+		margin: 0 auto;
+		padding: 0 70px;
+	}
+	.title div{
+		float: left;
+		margin-top: 10px;
+	}
+	ul.titleRight{
+		position: absolute;
+		width: 500px;
+		height: 60px;
+		right: 0;
+		margin-right: 70px;
+		list-style-type: disc;
+	}
+	.titleRight li{
+		float: left;
+		margin:26px 20px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.titleRight button{
+		width: 90px;
+		height: 30px;
+		margin-top: 18px;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		background: #BCAC7B;
+		font-size: 16px;
+		cursor: pointer;
+    }
+    
+
+    .tabActive{
+		position: relative;
+		color: #B69733;
+	}
+	.tabActive:after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 14px;
+		width: 50px;
+		height: 3px;
+		background: #B69733;
+    }
+    
+    
+    .content .left_menu{
+        float: left;
+        height: 400px;
+        width: 270px;
+    }
+
+    .content .right_information{
+        float: left;
+        margin-left: 77px;
+        width: 853px;
+        height: 874px;
+    }
+    .content .right_information .title_menu,.bottom_detail{
+        background-color: #fff;
+        margin-bottom: 28px;
+       
+    }
+    .content .right_information .title_menu{
+        height: 130px;
+    }
+
+    .content .right_information .title_menu .title_p{
+        padding-top: 26px;
+    }
+
+    .content .right_information .title_menu .title_p,.menu_ul{
+        margin-left: 36px;
+        padding-top: 28px;
+    }
+    
+    .content .right_information .title_menu .title_p h2{
+        font-size: 145%;
+    }
+
+    .content .right_information .title_menu li{
+        float: left;
+        font-size: 125%;
+        padding-right: 76px;
+        cursor: pointer;
+    }
+
+    .content .right_information .bottom_detail .form_container{
+        margin-left:36px;
+        padding: 36px 0;
+    }
+
+    .form-group{
+        margin-bottom: 31px;
+    }
+
+    .content .right_information .bottom_detail .form_container .head_portrait,.user{
+        float: left;
+    }
+
+    .content .right_information .bottom_detail .form_container .user{
+        padding: 41px 0;
+        margin-left:36px; 
+    }
+
+    .content .right_information .bottom_detail .form_container .user h2,.icon{
+        font-size: 145%;
+        float: left;
+        margin-right: 10px;
+    }
+    .content .right_information .bottom_detail .form_container .is_vip p{
+        font-size: 14px;
+        color: #cab677;
+    }
+
+    .content .right_information .bottom_detail .form_container input,select{
+        border:1px solid #e7e7e7;
+        border-radius:6px;
+        height: 30px;
+    }
+    .content .right_information .bottom_detail .form_container .submit{
+        background-color: #b69733;
+        color: #fff;
+        font-size: 16px;
+        border: 0;
+        border-radius:6px;
+        height: 32px;
+    }
+
+    .clearfloat{clear:both;height:0;font-size: 1px;line-height: 0px;} 
+
+
+
+
+	dd, dt {
+		float: left;
+		line-height: 40px;
+		height: 40px;
+		margin-right: 18px;
+	}
+	dt{
+		width: 54px;
+		font-weight: bold;
+	}
+	dd ul li{
+		float: left;
+		margin-right: 18px;
+	}
+	.footer{
+		width: 1200px;
+		margin: 36px auto 0 auto;
+	}
+	.bottom_center{
+		margin-top: 50px;
+		height:300px;
+	}
+	.bottom_center div{
+		float: left;
+		width: 240px;
+		height: 18px;
+	}
+	.bottom_title {
+		padding-left:80px;
+		font-weight: bold;
+	}
+	.bottom_func {
+		padding-left:80px;
+		margin-top: 12px;
+		cursor: pointer;
+	}
+	.menu{
+		height: 350px;
+		width: 270px;
+		margin-right: 76px;
+        background: #fff;
+	}
+	.menu li{
+		width: 270px;
+		height: 70px;
+		padding-left: 24px;
+		line-height: 70px;
+		border: 1px solid #E6E6E6;
+	}
+	.menu li:nth-child(1),.menu li:nth-child(2),.menu li:nth-child(3),.menu li:nth-child(4){
+		border-bottom: none;
+	}
+	#accountInfo{
+		height:720px;
+		margin-bottom: 20px;
+	}
+</style>
+<body>
+    <div class="head">
+		<div class="title">
+			<div><img width="50" height="50" src="/img/96Logo-1-2.png"></div>
+			<div><img style="margin-top: 12px;margin-left: 18px;" width="200" height="26" src="/img/96Logo-2-2.png"></div>
+			<ul class="titleRight">
+				<li style="list-style-type:none;"><a href="index.ejs">首页</a></li>
+				<li><a href="3DCloudHall.ejs">3D云展厅</a></li>
+				<li><a href="3DCloudDesign.ejs">3D云设计</a></li>
+				<li><a href="login.ejs">退出登录</a></li>
+			</ul>
+		</div>
+    </div>
+    <div class="content">
+        <div class="left_menu">
+                <ul class="menu">
+                    <li><a style="color:#B69733;" href="personal.ejs">个人资料</a></li>
+                    <li>升级会员</li>
+                    <li><a href="myDesign.ejs">我的设计</a></li>
+                    <li><a href="myCollect.ejs">我的收藏</a></li>
+                    <li>信息中心</li>
+                </ul>
+            <div class="clearfloat"></div>
+        </div>
+        <div class="right_information">
+            <div class="title_menu">
+                <div class="title_p">
+                    <h2>个人资料</h2>
+                </div>
+                <div class="menu_ul">
+                    <ul>
+                        <li class="tabActive">基本资料</li>
+                        <li>账户信息</li>
+                        <li>修改密码</li>
+                    </ul>
+                    <div class="clearfloat"></div>
+                </div>
+            </div>
+            <div id="baseInfo" class="bottom_detail">
+                <div class="form_container">
+                    <form id="personalTable" method="POST">
+                        <div class="form-group">
+                            <div class="head_portrait">
+                                <img src="/img/personal.png" />
+                            </div>
+                            
+                            <div class="user">
+                                <div class="user_block">
+                                    <h2>Hi,admin</h2>
+                                    <div class="icon">
+                                        <img src="/img/user_icon.png" />
+                                        <img src="/img/user_icon2.png" />
+                                    </div>
+                                    <div class="clearfloat"></div>
+                                </div>
+                                <div class="is_vip">
+                                    <p>升级VIP,享受360°高清漫游</p>
+                                </div>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>昵称:</label>
+                            <input type="text" id="" name="" placeholder="用户名长度4-16字符" />
+                        </div>
+                        <div class="form-group">
+                            <label>性别:</label>
+                            <label class="radio-inline">
+                                <input type="radio" style="height: 15px;" name="" id="" value="option1" checked> 男士
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" style="height: 15px;" name="" id=""  value="option2"> 女士
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="" style="height: 15px;" id=""  value="option2"> 保密
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>姓名:</label>
+                            <input type="text" id="" name="" placeholder="请填写真实姓名可用于账号找回" style="width: 240px;" />
+                        </div>
+                        <div class="form-group">
+                            <label>邮箱:</label>
+                            <input type="email" id="" name="" placeholder="绑定邮箱可用于登录和找回密码" style="width: 300px;"/>
+                        </div>
+                        <div class="form-group">
+                            <label>手机:</label>
+                            <input type="menber" id="" name="" placeholder="绑定手机可用于登录和找回密码" style="width: 300px;" />
+                        </div>
+                        <div class="form-group">
+                            <label>所在地:</label>
+                            <select id="">
+                                <option value="">选择省份</option>
+                            </select>
+                            <select id="">
+                                <option value="">选择城市</option>
+                            </select>
+                            <select id="">
+                                <option value="">选择地区</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button id="submit" class="submit">确定保存</button>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+			<div id="accountInfo" style="display:none;padding-top:38px;padding-left:22px;" class="bottom_detail">
+				<div style="">
+					账户信息
+				</div>
+            </div>
+			<div id="updatePassword" style="display:none;" class="bottom_detail">
+                修改密码
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+		<div><img src="/img/footer-1.png"></div>
+		<div class="bottom_center">
+			<div>
+				<div class="bottom_title">新手指南</div>
+				<div class="bottom_func">电脑端注册</div>
+				<div class="bottom_func">手机端注册</div>
+				<div class="bottom_func">收货指南</div>
+				<div class="bottom_func">购买流程</div>
+				<div class="bottom_func">积分规则</div>
+				<div class="bottom_func">评价管理</div>
+				<div class="bottom_func">邀请码的使用</div>
+				<div class="bottom_func">会员级别</div>
+			</div>
+			<div>
+				<div class="bottom_title">平台服务</div>
+				<div class="bottom_func">厂商服务</div>
+				<div class="bottom_func">物流服务</div>
+				<div class="bottom_func">线路操作</div>
+				<div class="bottom_func">服务说明</div>
+			</div>
+			<div>
+				<div class="bottom_title">购物保障</div>
+				<div class="bottom_func">隐私保护</div>
+				<div class="bottom_func">广告规则</div>
+				<div class="bottom_func">物流禁运品规定</div>
+			</div>
+			<div>
+				<div class="bottom_title">帮助中心</div>
+				<div class="bottom_func">参加抽奖</div>
+				<div class="bottom_func">找回密码</div>
+				<div class="bottom_func">获取优惠券</div>
+				<div class="bottom_func">退货退款流程</div>
+			</div>
+			<div>
+				<div class="bottom_title">关于我们</div>
+				<div class="bottom_func">二维码</div>
+				<div class="bottom_func">免责声明</div>
+				<div class="bottom_func">联系我们</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    $(".content").on("click",".menu_ul li",function(){
+		$(this).siblings().removeClass("tabActive");
+		$(this).addClass("tabActive");
+		if($(this).text() == "基本资料"){
+			$("#baseInfo").css({display:'block'});
+			$("#accountInfo").css({display:'none'});
+			$("#updatePassword").css({display:'none'});
+		}else if($(this).text() == "账户信息"){
+			$("#accountInfo").css({display:'block'});
+			$("#baseInfo").css({display:'none'});
+			$("#updatePassword").css({display:'none'});
+		}
+		else if($(this).text() == "修改密码"){
+			$("#updatePassword").css({display:'block'});
+			$("#baseInfo").css({display:'none'});
+			$("#accountInfo").css({display:'none'});
+		}
+	});
+</script>

@@ -25,6 +25,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/xuexi', function(req, res, next) {
+  res.render('xuexi');
+});
 
 router.get('/fendo', function (req, res) {  
   res.send('hello,world!');  
@@ -152,11 +155,14 @@ router.get('/reg', function (req, res) {
   });    
 });
 
+router.get('/bootstrap', function(req, res, next) {
+  res.render('bootstrap/index8');
+});
 
-
+router.get('/yungu/:id', function(req, res, next) {
+  res.render('yungu/'+req.params.id);
+});
 // monnpm install hiredis redis
-
-
 
 
 // var conn = mongoose.connect.openUri('mongodb://127.0.0.1:27017/runoob');

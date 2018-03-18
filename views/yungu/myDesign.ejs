@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3D云设计</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+</head>
+<style>
+	.panel_body{
+		background: #EFEFEF;
+	}
+	.head{
+		width: 100%;
+		height: 70px;
+		background: #FCFCFC;
+	}
+	.content{
+		width: 1200px;
+		margin: 0 auto;
+		padding-top: 70px;
+	}
+	.title{
+		position: relative;
+		width: 1200px;
+		height: 70px;
+		margin: 0 auto;
+		padding: 0 70px;
+	}
+	.title div{
+		float: left;
+		margin-top: 10px;
+	}
+	ul.titleRight{
+		position: absolute;
+		width: 500px;
+		height: 60px;
+		right: 0;
+		margin-right: 70px;
+		list-style-type: disc;
+	}
+	.titleRight li{
+		float: left;
+		margin:26px 20px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.titleRight button{
+		width: 90px;
+		height: 30px;
+		margin-top: 18px;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		background: #BCAC7B;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.menu,.myDesign,.tabContent{
+		float: left;
+		background: #fff;
+	}
+	.myDesign{
+		height: 130px;
+		width: 854px;
+		margin-bottom: 26px;
+	}
+	.tabContent{
+		width: 854px;
+		height: 790px;
+	}
+	.active{
+		position: relative;
+		text-align: center;
+		color: #B69733;
+	}
+	.active:after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 100px;
+		height: 3px;
+		background: #B69733;
+	}
+	.menu{
+		height: 350px;
+		width: 270px;
+		margin-right: 76px;
+	}
+	.menu li{
+		width: 270px;
+		height: 70px;
+		padding-left: 24px;
+		line-height: 70px;
+		border: 1px solid #E6E6E6;
+	}
+	.menu li:nth-child(1),.menu li:nth-child(2),.menu li:nth-child(3),.menu li:nth-child(4){
+		border-bottom: none;
+	}
+	ul.ul_list{
+		margin-top: 32px;
+		margin-left:24px;
+		clear: both;
+	}
+	ul.ul_list li{
+		float: left;
+		width: 770px;
+		height: 184px;
+		margin:0 10px;
+		margin-bottom: 36px;
+		border: 1px solid #EFEFEF;
+	}
+	ul.ul_list li>img{
+		width: 248px;
+		height: 188px;
+	}
+	ul.ul_list li p{
+		margin-left: 14px;
+		margin-top: 14px;
+	}
+	.footer{
+		width: 1200px;
+		margin: 36px auto 0 auto;
+	}
+	.bottom_center{
+		margin-top: 50px;
+		height:300px;
+	}
+	.bottom_center div{
+		float: left;
+		width: 240px;
+		height: 18px;
+	}
+	.bottom_title {
+		padding-left:80px;
+		font-weight: bold;
+	}
+	.bottom_func {
+		padding-left:80px;
+		margin-top: 12px;
+		cursor: pointer;
+	}
+	.page{
+		width:140px;
+		margin: 0 auto;
+	}
+</style>
+<body>
+	<div class="head">
+		<div class="title">
+			<div><img width="50" height="50" src="/img/96Logo-1-2.png"></div>
+			<div><img style="margin-top: 12px;margin-left: 18px;" width="200" height="26" src="/img/96Logo-2-2.png"></div>
+			<ul class="titleRight">
+				<li style="list-style-type:none;"><a href="index.ejs">首页</a></li>
+				<li><a href="3DCloudHall.ejs">3D云展厅</a></li>
+				<li><a href="3DCloudDesign.ejs">3D云设计</a></li>
+				<li><a href="login.ejs">退出登录</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel_body">
+		<div class="content">
+			<ul class="menu">
+				<li><a href="personal.ejs">个人资料</a></li>
+				<li>升级会员</li>
+				<li><a style="color:#B69733;" href="myDesign.ejs">我的设计</a></li>
+				<li><a href="myCollect.ejs">我的收藏</a></li>
+				<li>信息中心</li>
+			</ul>
+			<div class="myDesign">
+				<div style="font-size: 32px;height:88px;line-height:88px;margin:0 36px;">我的设计</div>
+				<div class="tab">
+					<div class="active"  style="text-align:center;width:100px;float:left;font-size: 24px;margin:0 36px;">设计方案</div>
+					<div style="text-align:center;width:100px;float:left;font-size: 24px;">回收站</div>
+				</div>
+			</div>
+			<div id="design" class="tabContent" style="display:none;margin-bottom:30px;">
+				<ul class="ul_list">
+					<li>
+						<div style="float:left;"><img style="width:163px;height:183px;" src="/img/design-1.jpg"></div>
+						<div style="float:left;margin-top:20px;margin-left:14px;width:590px;height:24px;">
+							<div style="margin-right:10px;float:left;width:62px;height:22px;font-size:14px;background:#ACACAC;text-align:center;color:#fff;">装修阶段</div><div style="float:left;">怡景苑</div>
+							<div style="text-align:left;width:590px;margin-top:20px;height:36px;line-height:46px;">
+								<div style="font-size:14px;padding-left:14px;margin-right:10px;float:left;">武汉 怡景苑</div>
+								<div style="font-size:14px;float:left;margin-right:10px;">共有0张渲染图</div>
+								<div style="font-size:14px;float:left;">最后修改时间：2017-11-29 09:16:26</div>
+							</div>
+							<div>
+								<button>去装修</button>
+								<button>改户型</button>
+								<button>下载</button>
+								<button>生成3D全屋漫游</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div style="float:left;"><img style="width:163px;height:183px;" src="/img/design-1.jpg"></div>
+						<div style="float:left;margin-top:20px;margin-left:14px;width:590px;height:24px;">
+							<div style="margin-right:10px;float:left;width:62px;height:22px;font-size:14px;background:#ACACAC;text-align:center;color:#fff;">装修阶段</div><div style="float:left;">怡景苑</div>
+							<div style="text-align:left;width:590px;margin-top:20px;height:36px;line-height:46px;">
+								<div style="font-size:14px;padding-left:14px;margin-right:10px;float:left;">武汉 怡景苑</div>
+								<div style="font-size:14px;float:left;margin-right:10px;">共有0张渲染图</div>
+								<div style="font-size:14px;float:left;">最后修改时间：2017-11-29 09:16:26</div>
+							</div>
+							<div>
+								<button>去装修</button>
+								<button>改户型</button>
+								<button>下载</button>
+								<button>生成3D全屋漫游</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div style="float:left;"><img style="width:163px;height:183px;" src="/img/design-1.jpg"></div>
+						<div style="float:left;margin-top:20px;margin-left:14px;width:590px;height:24px;">
+							<div style="margin-right:10px;float:left;width:62px;height:22px;font-size:14px;background:#ACACAC;text-align:center;color:#fff;">装修阶段</div><div style="float:left;">怡景苑</div>
+							<div style="text-align:left;width:590px;margin-top:20px;height:36px;line-height:46px;">
+								<div style="font-size:14px;padding-left:14px;margin-right:10px;float:left;">武汉 怡景苑</div>
+								<div style="font-size:14px;float:left;margin-right:10px;">共有0张渲染图</div>
+								<div style="font-size:14px;float:left;">最后修改时间：2017-11-29 09:16:26</div>
+							</div>
+							<div>
+								<button>去装修</button>
+								<button>改户型</button>
+								<button>下载</button>
+								<button>生成3D全屋漫游</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="page">
+					<span><</span>
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>></span>
+				</div>
+			</div>
+			<div id="recycle" class="tabContent" style="margin-bottom:30px;">
+				<ul class="ul_list">
+					<li>
+						<div style="float:left;"><img style="width:163px;height:183px;" src="/img/design-1.jpg"></div>
+						<div style="float:left;margin-top:20px;margin-left:14px;width:590px;height:24px;">
+							<div style="margin-right:10px;float:left;width:62px;height:22px;font-size:14px;background:#ACACAC;text-align:center;color:#fff;">装修阶段</div><div style="float:left;">怡景苑</div>
+							<div style="text-align:left;width:590px;margin-top:20px;height:36px;line-height:46px;">
+								<div style="font-size:14px;padding-left:14px;margin-right:10px;float:left;">武汉 怡景苑</div>
+								<div style="font-size:14px;float:left;margin-right:10px;">共有0张渲染图</div>
+								<div style="font-size:14px;float:left;">最后修改时间：2017-11-29 09:16:26</div>
+							</div>
+							<div>
+								<button>恢复</button>
+								<button>彻底删除</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div style="float:left;"><img style="width:163px;height:183px;" src="/img/design-1.jpg"></div>
+						<div style="float:left;margin-top:20px;margin-left:14px;width:590px;height:24px;">
+							<div style="margin-right:10px;float:left;width:62px;height:22px;font-size:14px;background:#ACACAC;text-align:center;color:#fff;">装修阶段</div><div style="float:left;">怡景苑</div>
+							<div style="text-align:left;width:590px;margin-top:20px;height:36px;line-height:46px;">
+								<div style="font-size:14px;padding-left:14px;margin-right:10px;float:left;">武汉 怡景苑</div>
+								<div style="font-size:14px;float:left;margin-right:10px;">共有0张渲染图</div>
+								<div style="font-size:14px;float:left;">最后修改时间：2017-11-29 09:16:26</div>
+							</div>
+							<div>
+								<button>恢复</button>
+								<button>彻底删除</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div style="float:left;"><img style="width:163px;height:183px;" src="/img/design-1.jpg"></div>
+						<div style="float:left;margin-top:20px;margin-left:14px;width:590px;height:24px;">
+							<div style="margin-right:10px;float:left;width:62px;height:22px;font-size:14px;background:#ACACAC;text-align:center;color:#fff;">装修阶段</div><div style="float:left;">怡景苑</div>
+							<div style="text-align:left;width:590px;margin-top:20px;height:36px;line-height:46px;">
+								<div style="font-size:14px;padding-left:14px;margin-right:10px;float:left;">武汉 怡景苑</div>
+								<div style="font-size:14px;float:left;margin-right:10px;">共有0张渲染图</div>
+								<div style="font-size:14px;float:left;">最后修改时间：2017-11-29 09:16:26</div>
+							</div>
+							<div>
+								<button>恢复</button>
+								<button>彻底删除</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="page">
+					<span><</span>
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>></span>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<img style="margin-left:80px;" src="/img/footer-2.png">
+			<div class="bottom_center">
+				<div>
+					<div class="bottom_title">新手指南</div>
+					<div class="bottom_func">电脑端注册</div>
+					<div class="bottom_func">手机端注册</div>
+					<div class="bottom_func">收货指南</div>
+					<div class="bottom_func">购买流程</div>
+					<div class="bottom_func">积分规则</div>
+					<div class="bottom_func">评价管理</div>
+					<div class="bottom_func">邀请码的使用</div>
+					<div class="bottom_func">会员级别</div>
+				</div>
+				<div>
+					<div class="bottom_title">平台服务</div>
+					<div class="bottom_func">厂商服务</div>
+					<div class="bottom_func">物流服务</div>
+					<div class="bottom_func">线路操作</div>
+					<div class="bottom_func">服务说明</div>
+				</div>
+				<div>
+					<div class="bottom_title">购物保障</div>
+					<div class="bottom_func">隐私保护</div>
+					<div class="bottom_func">广告规则</div>
+					<div class="bottom_func">物流禁运品规定</div>
+				</div>
+				<div>
+					<div class="bottom_title">帮助中心</div>
+					<div class="bottom_func">参加抽奖</div>
+					<div class="bottom_func">找回密码</div>
+					<div class="bottom_func">获取优惠券</div>
+					<div class="bottom_func">退货退款流程</div>
+				</div>
+				<div>
+					<div class="bottom_title">关于我们</div>
+					<div class="bottom_func">二维码</div>
+					<div class="bottom_func">免责声明</div>
+					<div class="bottom_func">联系我们</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	$(".tab").on("click","div",function(){
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
+		if($(this).text() == "设计方案"){
+			$("#design").css({display:'block'});
+			$("#recycle").css({display:'none'});
+		}else{
+			$("#recycle").css({display:'block'});
+			$("#design").css({display:'none'});
+		}
+	});
+</script>
+</html>

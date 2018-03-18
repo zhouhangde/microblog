@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3D云设计</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+</head>
+<style>
+    .clearfloat{clear:both;height:0;font-size: 1px;line-height: 0px;} 
+
+    body{
+        background-color: #ccc;
+        overflow-y: hidden;
+    }
+    .condition{
+        /*width: 866px;
+        height: 547px;*/
+        width: 1280px;
+        margin: 60px auto;
+        height: 547px;
+        border-radius: 12px;
+        background-color: #fff;
+    }
+    .condition .con_top{
+        padding: 32px 60px;
+    }
+
+    .condition .con_top .search{
+        float: left;
+        
+    }
+    .condition .con_top .search_result{
+        float: left;
+        font-size: 18px; 
+        padding:4px 8px;      
+    }
+
+    .condition .con_bottom{
+        padding: 0 60px;
+    }
+
+    .condition .con_bottom .filter{
+        background-color: #e9e9e9;
+        border: 1px solid #c1c1c1;
+        border-radius: 12px;
+        width: 114px;
+        height: 438px;
+        float: left;
+    }
+  
+    .condition .con_bottom .filter h2{
+        font-size: 130%;
+        font-weight: bold;
+        padding-bottom:10px; 
+    }
+    .condition .con_bottom .filter li{
+        font-size: 14px;
+        line-height: 22px;
+        cursor: pointer;
+    }
+
+    .filter_chosen{
+        padding: 18px 21px;
+    }
+
+    .tabActive{
+		color: #B69733;
+	}
+	.tabActive:after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 75px;
+		width: 50px;
+		height: 3px;
+    }
+
+    .condition .con_bottom .info_list{
+        background-color: #e9e9e9;
+        border: 1px solid #c1c1c1;
+        border-radius: 12px;
+        /*width: 626px;
+        height: 438px;*/
+        width: 1024px;
+        height: 438px;
+        float: left;
+        margin-left: 6px;
+    }
+
+    .condition .con_bottom .info_list ul{
+        padding: 16px 16px;
+    }
+    .condition .con_bottom .info_list li{
+	    position: relative;
+        background-color: #fff;
+        float: left;
+        width: 192px;
+        height: 200px;
+        margin-left: 5px;
+        margin-bottom: 5px;
+    }
+	.hoverClass{
+		background-color: #BFBFBF;
+		filter:alpha(opacity:30);
+		opacity:0.6;
+	}
+	.po_vr {
+		display: none;
+		position: absolute;
+		color: #FFFFFF;
+		width: 114px;
+		text-align: center;
+		top: 84px;
+		left: 42px;
+		height: 30px;
+		line-height: 25px;
+		background-color: #B69733;
+		cursor: pointer;
+		font-style:normal;
+	}
+	.displayShow{
+		display: block;
+	}
+</style>
+<body>
+    <div class="condition">
+        <div class="con_top">
+            <div class="search" style="background:#E9E9E9;border:1px solid #CCCCCC;width:380px;height:32px;line-height:32px;border-radius:8px;">
+                <select style="background:#E9E9E9;float:left;border:none;width:54px;padding-left:6px;height:32px;">
+                    <option value ="volvo">全国</option>
+                </select>
+                <p style="float:left;text-align:left;height:28px;border:none;width:200px;height:32px;width:286px;" contenteditable="true">123</p>
+                <div style="height:32px;float:left;margin-right: 8px;"><img src="/img/line.png" style="margin-top:2px;"></div>
+                <div style="height:32px;float:left;"><img style="margin-top:6px;" src="/img/search.png"></div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	
+</script>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>设计师工作台</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+</head>
+<style>
+	body{
+		width:100%;
+		overflow-y: hidden;
+	}
+</style>
+<body>
+	<iframe id="design" style="width:100%;" height="662" src="https://www.kujiale.com/vc2/main"></iframe>
+	<!--<iframe id="design" style="width:100%;" height="662" src="http://yun.kujiale.com/design/3FO4JCU4M0RU/show"></iframe>-->
+</body>
+<script src="/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	$(window).on('load',function(){
+		var name = "height";
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=null){
+			var iframe = document.getElementById("design");
+			iframe.height = unescape(r[2]);
+			$('#design').css({height:unescape(r[2])});
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,802 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3D云展厅</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+</head>
+<style>
+	.head{
+		width: 100%;
+		height: 70px;
+		background:#F0F0F0;
+	}
+	.content{
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.tabDiv{
+		text-align: center;
+	}
+	.title{
+		position: relative;
+		width: 1200px;
+		height: 70px;
+		margin: 0 auto;
+		padding: 0 70px;
+	}
+	.title div{
+		float: left;
+		margin-top: 10px;
+	}
+	ul.titleRight{
+		position: absolute;
+		width: 500px;
+		height: 60px;
+		right: 0;
+		margin-right: 70px;
+		list-style-type: disc;
+	}
+	.titleRight li{
+		float: left;
+		margin:26px 20px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.titleRight button{
+		width: 90px;
+		height: 30px;
+		margin-top: 18px;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		background: #BCAC7B;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.tab{
+		display: inline-block;
+		font-size: 28px;
+		width: 200px;
+		margin: 40px 0 30px 0;
+		cursor: pointer;
+	}
+	.tabActive{
+		position: relative;
+		color: #B69733;
+	}
+	.tabActive:after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 75px;
+		width: 50px;
+		height: 3px;
+		background: #B69733;
+	}
+	.search{
+		text-align: center;
+	}
+	/*.filter{
+		border-bottom: 1px solid #E9E9E9;
+	}*/
+	.filter dl{
+		clear: both;
+		margin-left: 180px;
+		height: 40px;
+	}
+	.filter ul li{
+		cursor: pointer;
+	}
+	dd, dt {
+		float: left;
+		line-height: 40px;
+		height: 40px;
+		margin-right: 18px;
+	}
+	dt{
+		width: 54px;
+		font-weight: bold;
+	}
+	dd ul li{
+		float: left;
+		margin-right: 18px;
+	}
+	.footer{
+		width: 1200px;
+		margin: 36px auto 0 auto;
+	}
+	.bottom_center{
+		margin-top: 50px;
+		height:300px;
+	}
+	.bottom_center div{
+		float: left;
+		width: 240px;
+		height: 18px;
+	}
+	.bottom_title {
+		padding-left:80px;
+		font-weight: bold;
+	}
+	.bottom_func {
+		padding-left:80px;
+		margin-top: 12px;
+		cursor: pointer;
+	}
+	.query{
+		text-align: left;
+		height: 40px;
+		line-height: 40px;
+		margin-left: 180px;
+	}
+	.query span{
+		margin: 20px;
+		cursor: pointer;
+	}
+	.query span:first-child{
+		margin-left: 0;
+	}
+	ul.ul_list{
+		margin-top: 30px;
+	}
+	ul.ul_list li{
+		float: left;
+		width: 380px;
+		height: 320px;
+		margin:0 10px;
+		margin-bottom: 60px;
+		position: relative;
+	}
+	ul.ul_list li>img{
+		width: 380px;
+		height: 260px;
+	}
+	.imgContent,.personImg{
+		float: left;
+		height: 60px;
+	}
+	.imgTitle,.statistics{
+		height: 30px;
+		line-height: 40px;
+	}
+	.imgTitle{
+		width: 320px;
+	}
+	.statistics{
+		width: 320px;
+	}
+	.statistics span{
+		margin-left: 2px;
+	}
+	.statistics img{
+		cursor: pointer;
+	}
+	.personImg{
+		width: 60px;
+	}
+	.personImg img{
+		margin: 2px 10px 0 10px;
+		width: 40px;
+		height: 40px;
+		border-radius:28px;
+	}
+	.page{
+		width: 460px;
+		margin: 0 auto;
+	}
+	.page>div{
+		float: left;
+		margin-right: 20px;
+	}
+	.pageNumber div{
+		width: 24px;
+		height:24px;
+		border-radius: 12px;
+		float: left;
+		text-align: center;
+		cursor: pointer;
+		font-size: 18px;
+	}
+	.pageActive{
+		background: #B69733;
+	}
+	.left,.right{
+		margin: 0 6px;
+		cursor: pointer;
+	}
+	.activeSearch{
+		color: #DFD2B1;
+	}
+	.activeSearch{
+		color: #B69733;
+	}
+	.po_vr,.po_collect{
+		position: absolute;
+		color: #FFFFFF;
+		width: 60px;
+		text-align: left;
+		margin-left: 8px;
+		top: 8px;
+		height: 25px;
+		line-height: 25px;
+		cursor: pointer;
+		font-style:normal;
+	}
+	.po_vr a,.po_collect a{
+		color: #B69733;
+		font-size: 22px;
+		font-weight: bold;
+	}
+	.po_vr{
+		left: 0;
+	}
+	.userDiv{
+		display: none;
+	}
+	.triangle {
+	    position: absolute;
+		left:220px;
+		top: 38px;
+		width: 0;
+		height: 0;
+		background:#fff;
+		filter:alpha(opacity:30);
+		opacity:0.4;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 10px solid black;
+	}
+	.func{
+		position: absolute;
+		width: 200px;
+		height: 34px;
+		left:125px;
+		top: 48px;
+		border-radius: 5px;
+		background:#A3A19F;
+	}
+	.func div{
+		width:97px;
+		text-align: center;
+	}
+</style>
+<body>
+	<div class="head">
+		<div class="title">
+			<div><img width="50" height="50" src="/img/96Logo-1-2.png"></div>
+			<div><img style="margin-top: 12px;margin-left: 18px;" width="200" height="26" src="/img/96Logo-2-2.png"></div>
+			<ul class="titleRight">
+				<li style="list-style-type:none;"><a href="index.ejs">首页</a></li>
+				<li><a href="#">3D云展厅</a></li>
+				<li class="aHover" style="cursor:pointer;">
+					3D云设计
+					<div class="userDiv">
+						<div class="triangle"></div>
+						<div class="func">
+							<div style="float:left;">专业版</div>
+							<div style="float:left;width:1px;">|</div>
+							<div style="float:left;"><a href="3DCloudDesign.ejs">普通版</a></div>
+						</div>
+					</div>
+				</li>
+				<li id="varTab"><a href="login.ejs">登录/注册</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+		<div class="tabDiv">
+			<div class="tab tabActive">VR实景展示</div>
+			<div class="tab">效果图展示</div>
+		</div>
+		<div class="search" style="margin:10px auto 20px auto;background:#E9E9E9;border:1px solid #CCCCCC;width:326px;height:32px;line-height:32px;border-radius:8px;">
+			<!--<select style="background:#E9E9E9;float:left;border:none;width:54px;padding-left:6px;height:32px;">
+				<option value ="volvo">风格</option>
+				<option value ="saab">空间</option>
+				<option value="opel">户型</option>
+				<option value="audi">面积</option>
+			</select>-->
+			<p style="float:left;text-align:left;height:28px;border:none;width:200px;height:32px;width:286px;" contenteditable="true">123</p>
+			<div style="height:32px;float:left;margin-right: 8px;"><img src="/img/line.png" style="margin-top:2px;"></div>
+			<div style="height:32px;float:left;"><img style="margin-top:6px;" src="/img/search.png"></div>
+		</div>
+		<div class="filter">
+			<dl>
+				<dt>风格：</dt>
+				<dd>
+					<ul>
+						<li class="activeSearch">不限</li>
+						<li>工装</li>
+						<li>现代简约</li>
+						<li>新中式</li>
+						<li>北欧</li>
+						<li>欧式</li>
+						<li>田园</li>
+						<li>地中海</li>
+						<li>简欧</li>
+						<li>日式</li>
+						<li>美式</li>
+						<li>混搭</li>
+						<li>简美</li>
+						<li>后现代</li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt>空间：</dt>
+				<dd>
+					<ul>
+						<li class="activeSearch">不限</li>
+						<li>客厅</li>
+						<li>厨房</li>
+						<li>餐厅</li>
+						<li>主卧</li>
+						<li>次卧</li>
+						<li>洗手间</li>
+						<li>储藏室</li>
+						<li>儿童房</li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt>户型：</dt>
+				<dd>
+					<ul>
+						<li class="activeSearch">不限</li>
+						<li>一居</li>
+						<li>二居</li>
+						<li>三居</li>
+						<li>四居</li>
+						<li>五居以上</li>
+					</ul>
+				</dd>
+			</dl>
+			<dl>
+				<dt>面积：</dt>
+				<dd>
+					<ul>
+						<li class="activeSearch">不限</li>
+						<li>80㎡及以下</li>
+						<li>80-100㎡</li>
+						<li>100-130㎡</li>
+						<li>130-150㎡</li>
+						<li>150㎡以上</li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<!--<div class="query">
+			<span class="activeSearch">最新</span>|
+			<span>浏览量<i class="fa fa-arrow-down" style="margin-left: 4px;"></i></span>|
+			<span>收藏量<i class="fa fa-arrow-down" style="margin-left: 4px;"></i></span>|
+			<span>点赞量<i class="fa fa-arrow-down" style="margin-left: 4px;"></i></span>
+		</div>-->
+		<div class="VRContent">
+			<ul class="ul_list">
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<div><img width="40" height="40" src="/img/head.png"></div>
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img width="56" height="56" src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img width="56" height="56" src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img width="56" height="56" src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img width="56" height="56" src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img width="56" height="56" src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<span class="po_vr">
+						<a target="_blank" href="http://yun.kujiale.com/design/3FO4JCU4M0RU/show">VR</a>
+					</span>
+					<img src="/img/room.png">
+					<div>
+						<div class="imgContent">
+							<div class="imgTitle">50㎡北欧极简小屋</div>
+							<div class="statistics">
+								<img src="/img/browse.png"><span>20</span>
+								<img src="/img/like.png"><span>10</span>
+								<img src="/img/collect.png"><span>11</span>
+							</div>
+						</div>
+						<div class="personImg">
+							<img width="56" height="56" src="/img/head.png">
+							<div style="font-size:14px;">小洋王仔</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="page">
+				<div class="left"><img src="/img/left-2.png"></div>
+				<div class="pageNumber">
+					<div class="pageActive">1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
+					<div>6</div>
+					<div>7</div>
+					<div>8</div>
+					<div>9</div>
+				</div>
+				<div class="right"><img src="/img/right-2.png"></div>
+				<div style="margin-left:10px;">
+					<input style="font-size:18px;width:36px;border:none;border-bottom:1px solid #000;margin-right:2px;" placeholder="跳至">页
+				</div>
+				<div style="margin-left:10px;"><img width="12" height="11" src="/img/jump.png" alt=""></div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<img src="/img/footer-1.png">
+		<div class="bottom_center">
+			<div>
+				<div class="bottom_title">新手指南</div>
+				<div class="bottom_func">电脑端注册</div>
+				<div class="bottom_func">手机端注册</div>
+				<div class="bottom_func">收货指南</div>
+				<div class="bottom_func">购买流程</div>
+				<div class="bottom_func">积分规则</div>
+				<div class="bottom_func">评价管理</div>
+				<div class="bottom_func">邀请码的使用</div>
+				<div class="bottom_func">会员级别</div>
+			</div>
+			<div>
+				<div class="bottom_title">平台服务</div>
+				<div class="bottom_func">厂商服务</div>
+				<div class="bottom_func">物流服务</div>
+				<div class="bottom_func">线路操作</div>
+				<div class="bottom_func">服务说明</div>
+			</div>
+			<div>
+				<div class="bottom_title">购物保障</div>
+				<div class="bottom_func">隐私保护</div>
+				<div class="bottom_func">广告规则</div>
+				<div class="bottom_func">物流禁运品规定</div>
+			</div>
+			<div>
+				<div class="bottom_title">帮助中心</div>
+				<div class="bottom_func">参加抽奖</div>
+				<div class="bottom_func">找回密码</div>
+				<div class="bottom_func">获取优惠券</div>
+				<div class="bottom_func">退货退款流程</div>
+			</div>
+			<div>
+				<div class="bottom_title">关于我们</div>
+				<div class="bottom_func">二维码</div>
+				<div class="bottom_func">免责声明</div>
+				<div class="bottom_func">联系我们</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	/*$(function(){
+		var name = "login";
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	   var r = window.location.search.substr(1).match(reg);
+	   console.log(unescape(r[2]));
+	   if(r!=null){
+			if(unescape(r[2]) == "true"){
+				$("#varTab").ejs("<a href='personal.ejs'>个人中心</a>");
+			}
+	   }else{
+			return null;
+	   }
+	});*/
+	$(".statistics").find("img").click(function(){
+		if($(this).hasClass("likeThis")){
+			$(this).removeClass("likeThis");
+			$(this).attr("src",$(this).attr("src").split("-1")[0]+$(this).attr("src").split("-1")[1]);
+		}else{
+			$(this).addClass("likeThis");
+			$(this).attr("src",$(this).attr("src").split(".")[0]+"-1.png");
+		}
+	});
+	/*$(".ul_list").find("li").hover(function(){
+		$(this).find(".po_vr").css({display:"block"});
+	},function(){
+		$(this).find(".po_vr").css({display:"none"});
+	});*/
+	$(".content").on("click",".tab",function(){
+		$(this).siblings().removeClass("tabActive");
+		$(this).addClass("tabActive");
+		if($(this).text()=="效果图展示"){
+			$(".po_vr").css({display: 'none'});
+		}else{
+			$(".po_vr").css({display: 'block'});
+		}
+		
+	});
+	$(".pageNumber").on("click","div",function(){
+		$(this).siblings().removeClass("pageActive");
+		$(this).addClass("pageActive");
+	});
+	$(".filter").on("click","li",function(){
+		$(this).siblings().removeClass("activeSearch");
+		$(this).addClass("activeSearch");
+	});
+	$(".query").on("click","span",function(){
+		$(this).siblings().removeClass("activeSearch");
+		$(this).addClass("activeSearch");
+	});
+	$(".aHover").hover(function(){
+		$(".userDiv").css({display: 'block'});
+	},function(){
+		$(".userDiv").css({display: 'none'});
+	});
+</script>
+</html>

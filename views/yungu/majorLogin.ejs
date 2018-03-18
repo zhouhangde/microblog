@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>专业版登录</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+</head>
+<style>
+	body{
+		background:rgba(0,0,0,0.7);
+	}
+	.loginDiv{
+		width: 1100px;
+		height: 480px;
+		background: #fff;
+	}
+	.header{
+		width: 100%;
+		height: 80px;
+		padding: 23px 0;
+		background: #000;
+	}
+	.header div{
+		float: left;
+	}
+	.title{
+		font-size: 30px;
+		width: 230px;
+		color: #fff;
+	}
+	.loginBody{
+		width: 1100px;
+		height: 400px;
+	}
+	.imgLeft{
+		float:left;
+		width: 700px;
+		height: 400px;
+	}
+	.loginPanel{
+		float:right;
+		width: 400px;
+		height: 400px;
+	}
+	.loginRight{
+		width: 250px;
+		height: 280px;
+		margin: 60px 75px;
+	}
+	.loginRight>div,.loginRight>.loginTab>div,.loginRight>.forgetPasswordTab>div{
+		width: 100%;
+		height: 30px;
+		margin-bottom:28px;
+	}
+	.loginRight>.loginTab>div>input,.loginRight>.forgetPasswordTab>div>input{
+		width: 210px;
+		height: 30px;
+		float: right;
+		border: none;
+		border-bottom: 1px solid #000;
+	}
+	.loginTitle{
+		color: #C3A958;
+		font-weight: bold;
+		height: 30px;
+		font-size: 30px;
+		text-align: center;
+		margin-bottom: 40px;
+	}
+	#submit{
+		cursor:pointer;
+		width:250px;
+		height:38px;
+		font-size:18px;
+		color:#fff;
+		background:#C3A958;
+		border:none;
+		margin-top:16px;
+		border-radius: 20px;
+	}
+	.loginTab,.forgetPasswordTab{
+		height:160px !important;
+	}
+</style>
+<body>
+	<div class="loginDiv">
+		<div class="header">
+			<div class="title">96情景体验空间</div>
+			<div style="width:64px;height:34px;line-height:34px;border:1px solid #A58A35;color:#A58A35;font-size:20px;text-align:center;">专业版</div>
+		</div>
+		<div class="loginBody">
+			<div class="imgLeft">
+				<img src="/img/upgrade.png">
+			</div>
+			<div class="loginPanel">
+				<div class="loginRight">
+					<div class="loginTitle">登录</div>
+					<div class="loginTab">
+						<div>
+							<div style="float:left;height:30px;"><img style="width:26px;height:30px;" width="26" height="30" src="/img/96Logo-5.png"></div>
+							<input id="telephone" placeholder="请输入手机号"/>
+						</div>
+						<div style="margin-bottom: 18px;">
+							<div style="float:left;"><img width="26" height="30" src="/img/96Logo-4.png"></div>
+							<input id="password" type="password" placeholder="密码"/>
+						</div>
+						<div style="text-align:right;margin-top:0;height:40px;"><div id="forgetPassword" style="cursor:pointer;">忘记密码？</div></div>
+					</div>
+					<div class="forgetPasswordTab" style="display:none;">
+						<div style="margin-bottom: 16px;">
+							<div style="float:left;height:30px;"><img style="width:26px;height:30px;" width="26" height="30" src="/img/96Logo-5.png"></div>
+							<input id="telephone" placeholder="请输入手机号"/>
+						</div>
+						<div style="margin-bottom: 16px;">								
+							<div style="float:left;height:30px;"><img style="width:26px;height:30px;" src="/img/verCode.png"></div>
+							<input style="float:left;margin-left:10px;width: 130px;border:none;border-bottom: 1px solid #000;" placeholder="验证码">
+							<button style="cursor:pointer;border-radius: 4px;border:none;height:29px;">获取验证码</button>
+						</div>
+						<div style="margin-bottom: 16px;">
+							<div style="float:left;height:30px;"><img style="width:26px;height:30px;" width="26" height="30" src="/img/96Logo-4.png"></div>
+							<input id="password" type="password" placeholder="请输入6-16位新密码"/>
+						</div>
+						<div style="margin-bottom: 16px;">
+							<div style="float:left;height:30px;"><img style="width:26px;height:30px;" width="26" height="30" src="/img/96Logo-4.png"></div>
+							<input id="password" type="password" placeholder="再次输入新密码"/>
+						</div>
+					</div>
+					<div><button id="submit">登录</button></div>
+				</div>
+			</div>
+			<!--<div id="forgetPasswordTab" style="display:none;">
+				<div>
+					<div style="float:left;"><img width="26" height="30" src="/img/96Logo-5.png"></div>
+					<input id="telephone" placeholder="请输入手机号"/>
+				</div>
+				<div style="margin-top: 10px;">								
+					<div style="float:left;"><img width="26" height="30" style="display:inline-block;" src="/img/verCode.png"></div>
+					<input style="width: 80px;border:none;border-bottom: 1px solid #000;" placeholder="验证码">
+					<button style="cursor:pointer;border-radius: 4px;border:none;height:29px;">获取验证码</button>
+				</div>
+				<div>
+					<div style="float:left;"><img width="26" height="30" src="/img/96Logo-4.png"></div>
+					<input id="password" type="password" placeholder="请输入6-16位新密码"/>
+				</div>
+				<div>
+					<div style="float:left;"><img width="26" height="30" src="/img/96Logo-4.png"></div>
+					<input id="password" type="password" placeholder="再次输入新密码"/>
+				</div>
+				<div><button id="submit">完成</button></div>
+			</div>-->
+		</div>
+	</div>
+</body>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+		$(".loginDiv").css({margin: ""+($(window).height()-400)/2+"px auto"});
+	});
+	$("#forgetPassword").click(function(){
+		$(".loginTitle").html("忘记密码");
+		$(".loginTab").css({display:'none'});
+		$(".forgetPasswordTab").css({display:'block'});
+		$("#submit").html("完成");
+	});
+</script>
+</html>
