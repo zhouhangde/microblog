@@ -1,0 +1,222 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>门禁管理</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="/communityMag/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/communityMag/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="/communityMag/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/communityMag/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <link rel="stylesheet" href="/communityMag/css/caocong/amazeui.min.css">
+    <!--自己写的全局css-->
+    <link rel="stylesheet" href="/communityMag/css/caocong/app.css">
+    <link rel="stylesheet" href="/communityMag/biz/css/xiaofangbaojing.css">
+</head>
+<body class="app-body">
+<header class="am-topbar">
+    <h1 class="am-topbar-brand">
+        <span>社区应用物业管理-门禁管理</span>
+    </h1>
+    <div class="am-fr app-tobbar-right">
+        <select class="">
+            <option value="">孝感**社区</option>
+            <option value="">孝感**社区</option>
+            <option value="">孝感**社区</option>
+            <option value="">孝感**社区</option>
+            <option value="">孝感**社区</option>
+        </select>
+        <div class="app-date">
+        </div>
+        <div class="am-dropdown app-user" data-am-dropdown="{boundary: '.am-topbar'}">
+            <span><a href="../gallery.ejs"  style="color: red;">返回物业管理</a></span>
+        </div>
+    </div>
+</header>
+<div class="am-g">
+    <div class="am-u-sm-6">
+        <section class="app-section">
+            <header>
+                <h3>门禁概况</h3>
+                <select class="">
+                    <option value="">本周</option>
+                    <option value="">本月</option>
+                    <option value="">上一周</option>
+                    <option value="">上一月</option>
+                </select>
+            </header>
+            <article>
+                <div class="app-article">
+                    <div id="myChart1" class="app-echart"></div>
+                </div>
+            </article>
+        </section>
+    </div>
+    <div class="am-u-sm-6">
+        <section class="app-section">
+            <header>
+                <h3>报修记录</h3>
+                <select class="">
+                    <option value="">本周</option>
+                    <option value="">本月</option>
+                    <option value="">上一周</option>
+                    <option value="">上一月</option>
+                </select>
+            </header>
+            <article>
+                <div class="app-article">
+                    <div id="myChart2" class="app-echart">
+
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+</div>
+<div class="am-g" style="margin-top: 20px">
+    <div class="am-u-sm-12">
+        <section style="width: 100%">
+            <header class="app-content-header">
+                <h3>门禁列表</h3>
+            </header>
+            <div class="app-query-group">
+                <div class="app-input">
+                    <label for="input1">起始日期</label>
+                    <input id="input1" type="text" value="2017-10-23">
+                </div>
+                <div class="app-input">
+                    <label for="input2">截止日期</label>
+                    <input id="input2" type="text" value="2017-10-23">
+                </div>
+                <div class="app-input">
+                    <label for="input3">子系统</label>
+                    <select class="" id="input3">
+                        <option value="">门禁系统</option>
+                    </select>
+                </div>
+                <div class="app-input">
+                    <label for="input4">报警点</label>
+                    <input id="input4" type="text">
+                </div>
+                <div class="app-input">
+                    <label for="input5">报警级别</label>
+                    <select class="" id="input5">
+                        <option value="">一级</option>
+                        <option value="">二级</option>
+                        <option value="">三级</option>
+                    </select>
+                </div>
+                <div class="app-input">
+                    <label for="input6">状态</label>
+                    <select class="" id="input6">
+                        <option value="">自动恢复</option>
+                    </select>
+                </div>
+                <div class="app-input">
+                    <label class="am-checkbox-inline"><input type="checkbox" value="option1"> 合并同源报警</label>
+                </div>
+                <button class="am-btn am-btn-sm am-radius">
+                    <i class="am-icon-search"></i>
+                    查询
+                </button>
+                <button class="am-btn am-btn-sm am-radius">
+                    <i class="am-icon-minus-circle"></i>
+                    导出
+                </button>
+            </div>
+            <table class="app-tableList">
+                <thead>
+                <tr>
+                    <td>保修时间</td>
+                    <td>子系统</td>
+                    <td>设备</td>
+                    <td>位置</td>
+                    <td>内容</td>
+                    <td>状态</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>2016-01-07 12:25:56</td>
+                    <td>3C-MJ</td>
+                    <td>MJ_GDM</td>
+                    <td>孝感**小区A栋2单元</td>
+                    <td>开启动（值：true）</td>
+                    <td>正常使用</td>
+                </tr>
+                <tr>
+                    <td>2016-01-07 12:25:56</td>
+                    <td>3C-MJ</td>
+                    <td>MJ_GDM</td>
+                    <td>孝感**小区A栋2单元</td>
+                    <td>开启动（值：true）</td>
+                    <td>正常使用</td>
+                </tr>
+                <tr>
+                    <td>2016-01-07 12:25:56</td>
+                    <td>3C-MJ</td>
+                    <td>MJ_GDM</td>
+                    <td>孝感**小区A栋2单元</td>
+                    <td>开启动（值：true）</td>
+                    <td>报修</td>
+                </tr>
+                <tr>
+                    <td>2016-01-07 12:25:56</td>
+                    <td>3C-MJ</td>
+                    <td>MJ_GDM</td>
+                    <td>孝感**小区A栋2单元</td>
+                    <td>开启动（值：true）</td>
+                    <td>正常使用</td>
+                </tr>
+                <tr>
+                    <td>2016-01-07 12:25:56</td>
+                    <td>3C-MJ</td>
+                    <td>MJ_GDM</td>
+                    <td>孝感**小区A栋2单元</td>
+                    <td>开启动（值：true）</td>
+                    <td>报修</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/communityMag/lib/jquery/dist/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/communityMag/js/caocong/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="/communityMag/js/caocong/amazeui.min.js"></script>
+<!--引入第三方库-->
+<script src="/communityMag/lib/echarts/echarts-all.js"></script>
+<!--这里写自己的js-->
+<script src="/communityMag/js/caocong/app.js"></script>
+<script src="/communityMag/biz/js/menjinguanli.js"></script>
+
+</body>
+</html>

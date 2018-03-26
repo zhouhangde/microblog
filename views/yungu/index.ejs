@@ -326,7 +326,7 @@
 		var name = "login";
 		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 	   var r = window.location.search.substr(1).match(reg);
-	   console.log(unescape(r[2]));
+	   
 	   if(r!=null){
 			//return unescape(r[2]);
 			if(unescape(r[2]) == "true"){

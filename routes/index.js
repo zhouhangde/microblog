@@ -159,19 +159,29 @@ router.get('/bootstrap', function(req, res, next) {
   res.render('bootstrap/index8');
 });
 
+//96空间
 router.get('/yungu/:id', function(req, res, next) {
   res.render('yungu/'+req.params.id);
 });
 // monnpm install hiredis redis
 
+//自己的后台
+router.get('/communityMag/:id', function(req, res, next) {
+  console.log(req.params.id);
+  res.render('communityMag/'+req.params.id);
+});
 
+//自己的后台
+router.get('/communityMag/caocong/:id', function(req, res, next) {
+  console.log(req.params.id);
+  res.render('communityMag/caocong/'+req.params.id);
+});
 // var conn = mongoose.connect.openUri('mongodb://127.0.0.1:27017/runoob');
 // var User = new mongoose.Schema({
 //     name: String,
 //     url: String
 // });
 // var myModel = conn.model('sites', User);
-
 
 // var MongoClient = require('mongodb').MongoClient;
 // var url = "mongodb://localhost:27017/";

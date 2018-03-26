@@ -1,0 +1,59 @@
+/* Write your styles */
+.app-body{background-color: #003366}
+header.am-topbar{background-color: #131e3c;min-height: 80px;}
+.am-topbar-brand span{color: white;height: 80px;line-height: 80px;font-size: 30px}
+.app-tobbar-right{height: 80px;display: flex;align-items: center}
+.app-tobbar-right select{padding: 0px 10px;color:#c4ecff;border: 1px solid white;background-color: #131e3c;border-radius: 5px }
+.app-date{margin-left: 15px;color:#c4ecff }
+.app-date span{margin-right: 10px}
+.app-date span:nth-child(2){margin-right: 20px}
+.app-user{margin-right: 20px;}
+.app-user button{margin-top: 0px}
+.am-panel{border: 1px solid #E4E4E4;box-shadow: 2px 2px 2px #e4e4e4}
+.am-panel-hd{color: white;font-weight: bold}
+.app-panel-warning .am-panel-hd{background-color: #FF9966;}
+.app-panel-success .am-panel-hd{background-color: #99CC00}
+.app-panel-primary .am-panel-hd{background-color: #6699FF}
+.app-panel-success2 .am-panel-hd{background-color: #339999}
+.app-panel-zise .am-panel-hd{background-color: #CC66FF}
+.am-panel-bd{height: 200px}
+.app-table1{width: 100%;text-align: center;min-height: 150px;border-left: 2px solid #FF9966}
+.app-table1  tr  th{width: 30%;background-color: #CCCCCC;text-align: center;border:1px solid white}
+.app-table1  tr  td{width: 70%;background-color: #DDDDDD;border:1px solid white}
+.app-table2{width: 100%;min-height: 150px}
+.app-table2 tr:nth-child(odd) td{color: #888888}
+.app-table2 tr:nth-child(even) td{color: #99CC00;font-size: 120%;padding-left: 20px}
+.app-gaoguan{padding: 0px 10px;background-color: white;margin-right: 10px;color: #99CC00;font-size: 90%}
+.app-table3{width: 100%;min-height: 150px;text-align: center}
+.app-table3 tr:nth-child(even) td{padding: 1px;}
+.app-table3 tr:nth-child(odd) td{color: #888888}
+.app-td{
+    background-color: #DDDDDD;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 5px;
+}
+.app-td span:nth-child(1){
+    margin-bottom: 20px;
+    color:#6699FF;
+    font-size: 120%;
+    font-weight: bold;
+}
+.app-table4{
+    width: 100%;
+    min-height: 150px;
+    text-align: center;
+    border-left: 2px solid #6699FF;
+}
+.app-table4 td{
+    background-color: #DDDDDD;
+    border: 1px solid white;
+}
+.app-table4 td span{color:#6699FF;font-weight: bold }
+.tableTitle{background-color: #cccccc}
+.app-table5{width: 100%;text-align: center;min-height: 150px;border-left: 2px solid #339999}
+.app-table5  tr  th{width: 30%;background-color: #CCCCCC;text-align: center;border:1px solid white}
+.app-table5  tr  td{width: 70%;background-color: #DDDDDD;border:1px solid white}
+.app-table5 span{color:#339999 ;font-weight: bold}

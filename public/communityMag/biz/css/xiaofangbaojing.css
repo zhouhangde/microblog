@@ -1,0 +1,17 @@
+.app-section{width: 90%}
+.app-section header{width: 80%;display: flex;align-items: center;border-bottom: 2px solid #336699}
+.app-section header h3{color: #339999;font-size: 180%;margin-bottom: 0;margin-right: 20px}
+.app-section header select{height: 24px;font-size: 80%}
+.app-article{width: 100%;background-color: #006699;margin-top: 20px}
+.app-echart{width: 100%;height: 300px;}
+.app-content-header{width: 40%;border-bottom: 2px solid #336699}
+.app-content-header h3{color: #339999;font-size: 180%;margin-bottom: 0;margin-right: 20px}
+.app-query-group{display: flex;align-items: center;margin-top: 10px;justify-content: space-around}
+.app-input{display: flex;justify-content: center;}
+.app-input label{color: white;margin-bottom: 0px;margin-right: 5px}
+.app-input input[type="text"],.app-input select{width: 130px;background-color: #0099FF;color: white;border-color:#0099FF; }
+.am-btn{background-color: #0099FF;color: white}
+.app-tableList{width: 100%;color: white;text-align: center;margin-top: 20px;min-height: 240px}
+.app-tableList thead tr{background-color: #0099FF;height: 30px;font-weight: bold}
+td{border: 1px solid white}
+.app-tableList tbody tr{background-color:  #006699}
