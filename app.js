@@ -62,9 +62,9 @@ app.use('/users', users);
 app.use('/userlist', userlist);
 
 //监听端口4100，默认为3000(其实一直在开启3000)
-// var server = app.listen(8080,()=>{
-//   console.log('success')
-// })
+var server = app.listen(8080,()=>{
+  console.log('success')
+})
 
 //跨域支持
 app.all('*', function(req, res, next) {
